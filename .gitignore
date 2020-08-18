@@ -1,0 +1,7 @@
+plan/
+bin/
+obj/
+personal budget.*
+users.xml
+incomes.xml
+expenses.xml

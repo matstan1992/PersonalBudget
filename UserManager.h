@@ -21,6 +21,8 @@ class UserManager
     bool isLoginExist(string login);
 
 public:
+    UserManager(string fileWithUsers) : fileWithUsers(fileWithUsers)
+    {};
     void loadUsersFromFile();
     void userSignUp();
     void showAllUsers();

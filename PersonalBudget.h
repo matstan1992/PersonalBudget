@@ -19,6 +19,7 @@ class PersonalBudget
     //DateManager dateManager;
 
 public:
+    PersonalBudget();
     void userSignUp();
     void showAllUsers();
 

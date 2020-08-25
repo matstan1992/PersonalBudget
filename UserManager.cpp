@@ -17,31 +17,23 @@ User UserManager::getDataNewUser()
 
     user.setId(retrieveNewUserId());
 
-    string name;
     cout << "Podaj imie: ";
-    cin >> name;
-    user.setName(name);
+    user.setName(AuxiliaryMethods::loadLine());
     user.setName(AuxiliaryMethods::changeTheFirstLetterToUpperCaseAndTheRestToLowerCase(user.getName()));
 
-    string surname;
     cout << "Podaj nazwisko: ";
-    cin >> surname;
-    user.setSurname(surname);
+    user.setSurname(AuxiliaryMethods::loadLine());
     user.setSurname(AuxiliaryMethods::changeTheFirstLetterToUpperCaseAndTheRestToLowerCase(user.getSurname()));
 
-    string login;
     do
     {
         cout << "Podaj login: ";
-        cin >> login;
-        user.setLogin(login);
+        user.setLogin(AuxiliaryMethods::loadLine());
     }
     while (isLoginExist(user.getLogin()) == true);
 
-    string password;
     cout << "Podaj haslo: ";
-    cin >> password;
-    user.setPassword(password);
+    user.setPassword(AuxiliaryMethods::loadLine());
 
     return user;
 }
@@ -79,3 +71,7 @@ void UserManager::showAllUsers()
     }
 }
 
+void UserManager::loadUsersFromFile()
+{
+    users = fileWithUsers.loadUsersFromFile();
+}

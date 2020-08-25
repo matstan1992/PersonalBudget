@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 
 #include "User.h"
 #include "Markup.h"
@@ -17,6 +18,7 @@ class FileWithUsers
 
 public:
     FileWithUsers();
+    vector <User> loadUsersFromFile();
     void addUserToFile(User user);
 
 };

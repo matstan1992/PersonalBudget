@@ -13,11 +13,11 @@ using namespace std;
 
 class FileWithUsers
 {
-    string nameFileWithUsers;
+    const string nameFileWithUsers;
     //bool isFileEmpty();
 
 public:
-    FileWithUsers();
+    FileWithUsers(string NAME_FILE_WITH_USERS) : nameFileWithUsers(NAME_FILE_WITH_USERS) {};
     vector <User> loadUsersFromFile();
     void addUserToFile(User user);
 

@@ -19,7 +19,10 @@ class PersonalBudget
     //DateManager dateManager;
 
 public:
-    PersonalBudget();
+    PersonalBudget(string nameFileWithUsers) : userManager(nameFileWithUsers)
+    {
+        userManager.loadUsersFromFile();
+    };
     void userSignUp();
     void showAllUsers();
 

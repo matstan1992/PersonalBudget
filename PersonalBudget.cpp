@@ -1,10 +1,5 @@
 #include "PersonalBudget.h"
 
-PersonalBudget::PersonalBudget()
-{
-    userManager.loadUsersFromFile();
-}
-
 void PersonalBudget::userSignUp()
 {
     userManager.userSignUp();

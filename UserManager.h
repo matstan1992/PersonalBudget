@@ -21,6 +21,7 @@ class UserManager
     bool isLoginExist(string login);
 
 public:
+    void loadUsersFromFile();
     void userSignUp();
     void showAllUsers();
 };

@@ -4,8 +4,11 @@
 #include <iostream>
 #include <vector>
 #include <windows.h>
+#include <algorithm>
 
 #include "User.h"
+#include "Markup.h"
+
 /*
 #include "UserManager.h"
 #include "BudgetManager.h"
@@ -21,6 +24,8 @@ class PersonalBudget
     User getDataNewUser();
     int retrieveNewUserId();
     bool isLoginExist(string login);
+    void addUserToFile(User user);
+    string changeTheFirstLetterToUpperCaseAndTheRestToLowerCase (string text);
     //UserManager userManager;
     //BudgetManager budgetManager;
     //DateManager dateManager;

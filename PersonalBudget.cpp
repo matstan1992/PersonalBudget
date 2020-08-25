@@ -5,7 +5,7 @@ void PersonalBudget::userSignUp()
     User user = getDataNewUser();
 
     users.push_back(user);
-    //addUserToFile(user);
+    addUserToFile(user);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
@@ -21,11 +21,13 @@ User PersonalBudget::getDataNewUser()
     cout << "Podaj imie: ";
     cin >> name;
     user.setName(name);
+    user.setName(PersonalBudget::changeTheFirstLetterToUpperCaseAndTheRestToLowerCase(user.getName()));
 
     string surname;
     cout << "Podaj nazwisko: ";
     cin >> surname;
     user.setSurname(surname);
+    user.setSurname(PersonalBudget::changeTheFirstLetterToUpperCaseAndTheRestToLowerCase(user.getSurname()));
 
     string login;
     do
@@ -76,3 +78,40 @@ void PersonalBudget::showAllUsers()
         cout << users[i].getPassword() << endl;
     }
 }
+
+void PersonalBudget::addUserToFile(User user)
+{
+    CMarkup xml;
+
+    bool fileExists = xml.Load( "users.xml" );
+
+    if (!fileExists)
+    {
+        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xml.AddElem("Users");
+    }
+
+    xml.FindElem();
+    xml.IntoElem();
+    xml.AddElem("User");
+    xml.IntoElem();
+    xml.AddElem("UserId", user.getId());
+    xml.AddElem("Name", user.getName());
+    xml.AddElem("Surname", user.getSurname());
+    xml.AddElem("Login", user.getLogin());
+    xml.AddElem("Password", user.getPassword());
+
+
+    xml.Save("users.xml");
+}
+
+string PersonalBudget::changeTheFirstLetterToUpperCaseAndTheRestToLowerCase(string text)
+{
+    if (!text.empty())
+    {
+        transform(text.begin(), text.end(), text.begin(), ::tolower);
+        text[0] = toupper(text[0]);
+    }
+    return text;
+}
+

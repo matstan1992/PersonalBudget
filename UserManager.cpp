@@ -11,9 +11,48 @@ void UserManager::userSignUp()
     system("pause");
 }
 
+void UserManager::userSignIn()
+{
+    User user;
+    string login = "", password = "";
+
+    cout << endl << "Podaj login: ";
+    login = AuxiliaryMethods::loadLine();
+
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end())
+    {
+        if (itr -> getLogin() == login)
+        {
+            for (int numberOfAttempts = 3; numberOfAttempts > 0; numberOfAttempts--)
+            {
+                cout << "Podaj haslo. Pozostalo prob: " << numberOfAttempts << ": ";
+                password = AuxiliaryMethods::loadLine();
+
+                if (itr -> getPassword() == password)
+                {
+                    cout << endl << "Zalogowales sie." << endl << endl;
+                    system("pause");
+                    signedInUserId = itr -> getId();
+                    return;
+                }
+            }
+            cout << "Wprowadzono 3 razy bledne haslo." << endl;
+            system("pause");
+            return;
+        }
+        itr++;
+    }
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+    system("pause");
+    return;
+}
+
 User UserManager::getDataNewUser()
 {
     User user;
+
+    system("cls");
 
     user.setId(retrieveNewUserId());
 
@@ -71,7 +110,10 @@ void UserManager::showAllUsers()
     }
 }
 
-void UserManager::loadUsersFromFile()
+bool UserManager::isUserSignedIn()
 {
-    users = fileWithUsers.loadUsersFromFile();
+    if(signedInUserId > 0)
+        return true;
+    else
+        return false;
 }

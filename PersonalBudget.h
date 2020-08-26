@@ -20,11 +20,14 @@ class PersonalBudget
 
 public:
     PersonalBudget(string nameFileWithUsers) : userManager(nameFileWithUsers)
-    {
-        userManager.loadUsersFromFile();
-    };
+    {};
     void userSignUp();
+    void userSignIn();
     void showAllUsers();
+    bool isUserSignedIn();
+
+    char selectOptionFromTheMainMenu();
+    char selectOptionFromTheUserMenu();
 
 };
 

@@ -21,10 +21,14 @@ class UserManager
     bool isLoginExist(string login);
 
 public:
-    UserManager(string fileWithUsers) : fileWithUsers(fileWithUsers)
-    {};
-    void loadUsersFromFile();
+    UserManager(string nameFileWithUsers) : fileWithUsers(nameFileWithUsers)
+    {
+        users = fileWithUsers.loadUsersFromFile();
+    };
     void userSignUp();
+    void userSignIn();
     void showAllUsers();
+    bool isUserSignedIn();
+
 };
 #endif

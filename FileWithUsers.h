@@ -20,7 +20,7 @@ public:
     FileWithUsers(string nameFileWithUsers) : NAME_FILE_WITH_USERS(nameFileWithUsers) {};
     vector <User> loadUsersFromFile();
     void addUserToFile(User user);
-
+    void saveAllUsersToFile(vector <User> users);
 };
 
 #endif

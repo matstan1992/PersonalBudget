@@ -23,6 +23,8 @@ public:
     {};
     void userSignUp();
     void userSignIn();
+    void logOutUser();
+    void changePasswordSignedInUser();
     void showAllUsers();
     bool isUserSignedIn();
 

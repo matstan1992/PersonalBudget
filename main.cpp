@@ -53,13 +53,13 @@ int main()
                 break;
             case '5':
                 personalBudget.showBalanceFromSelectedPeriod();
-                break;
+                break;*/
             case '6':
                 personalBudget.changePasswordSignedInUser();
                 break;
             case '7':
                 personalBudget.logOutUser();
-                break;*/
+                break;
             }
         }
     }

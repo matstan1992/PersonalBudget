@@ -50,6 +50,16 @@ void PersonalBudget::userSignIn()
     userManager.userSignIn();
 }
 
+void PersonalBudget::logOutUser()
+{
+    userManager.logOutUser();
+}
+
+void PersonalBudget::changePasswordSignedInUser()
+{
+    userManager.changePasswordSignedInUser();
+}
+
 void PersonalBudget::showAllUsers()
 {
     userManager.showAllUsers();

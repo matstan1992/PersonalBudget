@@ -48,6 +48,29 @@ void UserManager::userSignIn()
     return;
 }
 
+void UserManager::logOutUser()
+{
+    signedInUserId = 0;
+}
+
+void UserManager::changePasswordSignedInUser()
+{
+    string newPassword = "";
+    cout << "Podaj nowe haslo: ";
+    newPassword = AuxiliaryMethods::loadLine();
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getId() == signedInUserId)
+        {
+            itr -> setPassword(newPassword);
+            cout << "Haslo zostalo zmienione." << endl << endl;
+            system("pause");
+        }
+    }
+    fileWithUsers.saveAllUsersToFile(users);
+}
+
 User UserManager::getDataNewUser()
 {
     User user;

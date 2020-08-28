@@ -8,16 +8,14 @@
 #include "User.h"
 #include "Markup.h"
 #include "AuxiliaryMethods.h"
+#include "XmlFile.h"
 
 using namespace std;
 
-class FileWithUsers
+class FileWithUsers : public XmlFile
 {
-    const string NAME_FILE_WITH_USERS;
-    //bool isFileEmpty();
-
 public:
-    FileWithUsers(string nameFileWithUsers) : NAME_FILE_WITH_USERS(nameFileWithUsers) {};
+    FileWithUsers(string nameFileWithUsers) : XmlFile(nameFileWithUsers) {};
     vector <User> loadUsersFromFile();
     void addUserToFile(User user);
     void saveAllUsersToFile(vector <User> users);

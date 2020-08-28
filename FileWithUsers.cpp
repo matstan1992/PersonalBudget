@@ -4,7 +4,7 @@ void FileWithUsers::addUserToFile(User user)
 {
     CMarkup xml;
 
-    bool fileExists = xml.Load(NAME_FILE_WITH_USERS);
+    bool fileExists = xml.Load(getFileName().c_str());
 
     if (!fileExists)
     {
@@ -23,7 +23,7 @@ void FileWithUsers::addUserToFile(User user)
     xml.AddElem("Password", user.getPassword());
 
 
-    xml.Save(NAME_FILE_WITH_USERS);
+    xml.Save(getFileName().c_str());
 }
 
 vector <User> FileWithUsers::loadUsersFromFile()
@@ -33,7 +33,7 @@ vector <User> FileWithUsers::loadUsersFromFile()
 
     CMarkup xml;
 
-    xml.Load(NAME_FILE_WITH_USERS);
+    xml.Load(getFileName().c_str());
 
     xml.FindElem();
     xml.IntoElem();
@@ -77,5 +77,5 @@ void FileWithUsers::saveAllUsersToFile(vector <User> users)
         xml.AddElem("Password", itr -> getPassword());
         xml.OutOfElem();
     }
-    xml.Save(NAME_FILE_WITH_USERS);
+    xml.Save(getFileName().c_str());
 }

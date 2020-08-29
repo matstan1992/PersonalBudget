@@ -48,11 +48,17 @@ void PersonalBudget::userSignUp()
 void PersonalBudget::userSignIn()
 {
     userManager.userSignIn();
+    if(userManager.isUserSignedIn())
+    {
+        budgetManager = new BudgetManager(userManager.retrieveSignedInUserId());
+    }
 }
 
 void PersonalBudget::logOutUser()
 {
     userManager.logOutUser();
+    delete budgetManager;
+    budgetManager = NULL;
 }
 
 void PersonalBudget::changePasswordSignedInUser()
@@ -68,4 +74,9 @@ void PersonalBudget::showAllUsers()
 bool PersonalBudget::isUserSignedIn()
 {
     userManager.isUserSignedIn();
+}
+
+void PersonalBudget::addIncome()
+{
+    budgetManager->addIncome();
 }

@@ -27,14 +27,18 @@ int AuxiliaryMethods::conversionStringToInt(string number)
     return numberInt;
 }
 
-string AuxiliaryMethods::downloadNumber(string text, int characterPosition)
+float AuxiliaryMethods::loadFloatNumber()
 {
-    string number = "";
-    while(isdigit(text[characterPosition]) == true)
-    {
-        number += text[characterPosition];
-        characterPosition ++;
-    }
+    float number = 0;
+    string input = "";
+
+    getline(cin, input);
+
+    if(input.find(',') !=string::npos)
+        input.replace(input.find(','), 1, ".");
+
+    number = atof(input.c_str());
+
     return number;
 }
 
@@ -70,21 +74,4 @@ string AuxiliaryMethods::conversionFloatToString(float number)
     ss << number;
     string str = ss.str();
     return str;
-}
-
-int AuxiliaryMethods::loadInteger()
-{
-    string input = "";
-    int number = 0;
-
-    while (true)
-    {
-        getline(cin, input);
-
-        stringstream myStream(input);
-        if (myStream >> number)
-            break;
-        cout << "To nie jest liczba. Wpisz ponownie. " << endl;
-    }
-    return number;
 }

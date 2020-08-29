@@ -23,6 +23,7 @@ class UserManager
 public:
     UserManager(string nameFileWithUsers) : fileWithUsers(nameFileWithUsers)
     {
+        signedInUserId = 0;
         users = fileWithUsers.loadUsersFromFile();
     };
     void userSignUp();
@@ -31,6 +32,6 @@ public:
     void changePasswordSignedInUser();
     void showAllUsers();
     bool isUserSignedIn();
-
+    int retrieveSignedInUserId();
 };
 #endif

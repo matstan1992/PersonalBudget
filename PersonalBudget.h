@@ -2,25 +2,30 @@
 #define PERSONALBUDGET_H
 
 #include <iostream>
-#include <vector>
-#include <windows.h>
 
 #include "Markup.h"
-#include "UserManager.h"/*
+#include "UserManager.h"
 #include "BudgetManager.h"
-#include "DateManager.h"
+/*#include "DateManager.h"
 */
 using namespace std;
 
 class PersonalBudget
 {
     UserManager userManager;
-    //BudgetManager budgetManager;
+    BudgetManager *budgetManager;
     //DateManager dateManager;
 
 public:
     PersonalBudget(string nameFileWithUsers) : userManager(nameFileWithUsers)
-    {};
+    {
+        budgetManager = NULL;
+    };
+    ~PersonalBudget()
+    {
+        delete budgetManager;
+        budgetManager = NULL;
+    };
     void userSignUp();
     void userSignIn();
     void logOutUser();
@@ -31,6 +36,7 @@ public:
     char selectOptionFromTheMainMenu();
     char selectOptionFromTheUserMenu();
 
+    void addIncome();
 };
 
 #endif

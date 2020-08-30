@@ -40,7 +40,7 @@ void BudgetManager::addIncomeWithTodayDate()
     income = enterDataForNewPosition(todayDate);
 
     incomes.push_back(income);
-    //fileWithIncomes.addNewPositionToFile(income);
+    fileWithIncomes.addIncomeToFile(income);
 
     cout << "Nowy przychod zostal dodany" << endl << endl;
     system("pause");

@@ -6,6 +6,7 @@
 #include <algorithm>
 
 #include "Income.h"
+#include "FileWithIncomes.h"
 #include "AuxiliaryMethods.h"
 
 using namespace std;
@@ -14,11 +15,13 @@ class BudgetManager
 {
     const int SIGNED_IN_USER_ID;
     vector <Income> incomes;
+    FileWithIncomes fileWithIncomes;
+
     Income enterDataForNewPosition(int date);
     int retrieveNewIncomeId();
 
 public:
-    BudgetManager(int signedInUserId) : SIGNED_IN_USER_ID(signedInUserId) {};
+    BudgetManager(string nameFileWithIncomes, int signedInUserId) : fileWithIncomes(nameFileWithIncomes), SIGNED_IN_USER_ID(signedInUserId) {};
     void addIncome();
     void addIncomeWithTodayDate();
     void addIncomeWithDifferentDate();

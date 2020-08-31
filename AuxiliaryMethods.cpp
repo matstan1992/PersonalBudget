@@ -75,3 +75,8 @@ string AuxiliaryMethods::conversionFloatToString(float number)
     string str = ss.str();
     return str;
 }
+
+float AuxiliaryMethods::conversionStringToFloat(string number)
+{
+    return atof(number.c_str());
+}

@@ -18,6 +18,7 @@ public:
     static string loadLine();
     static char loadCharacter();
     static string conversionFloatToString(float number);
+    static float conversionStringToFloat(string number);
 };
 
 #endif

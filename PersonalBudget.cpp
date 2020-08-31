@@ -80,3 +80,8 @@ void PersonalBudget::addIncome()
 {
     budgetManager->addIncome();
 }
+
+void PersonalBudget::showIncomes()
+{
+    budgetManager->showIncomes();
+}

@@ -35,7 +35,7 @@ void BudgetManager::addIncome()
 void BudgetManager::addIncomeWithTodayDate()
 {
     Income income;
-    int todayDate = 20200825;
+    int todayDate = 20200825; //dateManager
 
     income = enterDataForNewPosition(todayDate);
 
@@ -48,7 +48,22 @@ void BudgetManager::addIncomeWithTodayDate()
 /*
 void BudgetManager::addIncomeWithDifferentDate()
 {
+    Income income;
+    int differentDate = 0;
+    string enterDate = "";
 
+    cout << "Podaj date (rrrr-mm-dd): ";
+    enetrDate = AuxiliaryMethods::loadLine();
+
+    dateManager.dateIsCorrect(enterDate)
+    differentDate = dateManager.convertDate
+    income = enterDataForNewPosition(differentDate);
+
+    incomes.push_back(income);
+    fileWithIncomes.addIncomeToFile(income);
+
+    cout << "Nowy przychod zostal dodany" << endl << endl;
+    system("pause");
 }
 
 /*
@@ -89,8 +104,17 @@ Income BudgetManager::enterDataForNewPosition(int date)
 
 int BudgetManager::retrieveNewIncomeId()
 {
-    if (incomes.empty() == true)
-        return 1;
-    else
-        return incomes.back().getIncomeId() + 1;
+    return fileWithIncomes.retrieveLastIncomeId() + 1;
+}
+void BudgetManager::showIncomes()
+{
+    for (int i = 0; i < incomes.size(); i++)
+    {
+        cout << incomes[i].getUserId() << endl;
+        cout << incomes[i].getIncomeId() << endl;
+        cout << incomes[i].getDate() << endl;
+        cout << incomes[i].getItem() << endl;
+        cout << incomes[i].getAmount() << endl;
+    }
+    system("pause");
 }

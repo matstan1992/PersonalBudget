@@ -21,11 +21,14 @@ class BudgetManager
     int retrieveNewIncomeId();
 
 public:
-    BudgetManager(string nameFileWithIncomes, int signedInUserId) : fileWithIncomes(nameFileWithIncomes), SIGNED_IN_USER_ID(signedInUserId) {};
+    BudgetManager(string nameFileWithIncomes, int signedInUserId) : fileWithIncomes(nameFileWithIncomes), SIGNED_IN_USER_ID(signedInUserId)
+    {
+        incomes = fileWithIncomes.loadIncomesFromFile(SIGNED_IN_USER_ID);
+    };
     void addIncome();
     void addIncomeWithTodayDate();
     void addIncomeWithDifferentDate();
-
+void showIncomes();
 };
 
 #endif

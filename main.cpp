@@ -8,7 +8,7 @@ int main()
 {
     char choice;
 
-    PersonalBudget personalBudget ("users.xml");
+    PersonalBudget personalBudget ("users.xml", "incomes.xml", "expenses.xml");
 
     while (true)
     {
@@ -39,13 +39,16 @@ int main()
 
             switch (choice)
             {
-          /*  case '1':
+            case '1':
                 personalBudget.addIncome();
                 break;
             case '2':
                 personalBudget.addExpense();
                 break;
-            case '3':
+                case '3':
+            personalBudget.showExpenses();
+            break;
+           /* case '3':
                 personalBudget.showBalanceFromCurrentMonth();
                 break;
             case '4':

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <sstream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -13,11 +14,11 @@ public:
     static string changeTheFirstLetterToUpperCaseAndTheRestToLowerCase (string text);
     static string conversionIntToString(int number);
     static int conversionStringToInt(string number);
-    static string downloadNumber(string text, int characterPosition);
+    static float loadFloatNumber();
     static string loadLine();
     static char loadCharacter();
     static string conversionFloatToString(float number);
-    static int loadInteger();
+    static float conversionStringToFloat(string number);
 };
 
 #endif

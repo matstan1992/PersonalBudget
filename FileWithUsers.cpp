@@ -9,7 +9,7 @@ void FileWithUsers::addUserToFile(User user)
     if (!fileExists)
     {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        xml.AddElem("Users");
+        xml.AddElem("USERS");
     }
 
     xml.FindElem();

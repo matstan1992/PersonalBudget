@@ -31,9 +31,9 @@ void UserManager::userSignIn()
 
                 if (itr -> getPassword() == password)
                 {
+                    signedInUserId = itr -> getId();
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
-                    signedInUserId = itr -> getId();
                     return;
                 }
             }
@@ -139,4 +139,9 @@ bool UserManager::isUserSignedIn()
         return true;
     else
         return false;
+}
+
+int UserManager::retrieveSignedInUserId()
+{
+    return signedInUserId;
 }

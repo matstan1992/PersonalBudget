@@ -50,7 +50,7 @@ void PersonalBudget::userSignIn()
     userManager.userSignIn();
     if(userManager.isUserSignedIn())
     {
-        budgetManager = new BudgetManager(NAME_FILE_WITH_INCOMES, userManager.retrieveSignedInUserId());
+        budgetManager = new BudgetManager(NAME_FILE_WITH_INCOMES, NAME_FILE_WITH_EXPENSES, userManager.retrieveSignedInUserId());
     }
 }
 

@@ -131,7 +131,7 @@ void BudgetManager::addExpenseWithTodayDate()
     expense = enterDataForNewExpense(todayDate);
 
     expenses.push_back(expense);
-    //fileWithExpenses.addExpenseToFile(expense);
+    fileWithExpenses.addExpenseToFile(expense);
 
     cout << "Nowy wydatek zostal dodany" << endl << endl;
     system("pause");
@@ -179,10 +179,7 @@ Expense BudgetManager::enterDataForNewExpense(int date)
 
 int BudgetManager::retrieveNewExpenseId()
 {
-    if (expenses.empty() == true)
-        return 1;
-    else
-        return expenses.back().getExpenseId() + 1;
+    return fileWithExpenses.retrieveLastExpenseId() + 1;
 }
 
 void BudgetManager::showExpenses()

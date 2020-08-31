@@ -8,7 +8,7 @@ int main()
 {
     char choice;
 
-    PersonalBudget personalBudget ("users.xml", "incomes.xml");
+    PersonalBudget personalBudget ("users.xml", "incomes.xml", "expenses.xml");
 
     while (true)
     {

@@ -8,6 +8,7 @@
 #include "Income.h"
 #include "Expense.h"
 #include "FileWithIncomes.h"
+#include "FileWithExpenses.h"
 #include "AuxiliaryMethods.h"
 
 using namespace std;
@@ -18,6 +19,7 @@ class BudgetManager
     vector <Income> incomes;
     vector <Expense> expenses;
     FileWithIncomes fileWithIncomes;
+    FileWithExpenses fileWithExpenses;
 
     Income enterDataForNewIncome(int date);
     Expense enterDataForNewExpense(int date);
@@ -26,9 +28,10 @@ class BudgetManager
     int retrieveNewExpenseId();
 
 public:
-    BudgetManager(string nameFileWithIncomes, int signedInUserId) : fileWithIncomes(nameFileWithIncomes), SIGNED_IN_USER_ID(signedInUserId)
+    BudgetManager(string nameFileWithIncomes, string nameFileWithExpenses, int signedInUserId) : fileWithIncomes(nameFileWithIncomes), fileWithExpenses(nameFileWithExpenses), SIGNED_IN_USER_ID(signedInUserId)
     {
         incomes = fileWithIncomes.loadIncomesFromFile(SIGNED_IN_USER_ID);
+        expenses = fileWithExpenses.loadExpensesFromFile(SIGNED_IN_USER_ID);
     };
     void addIncome();
     void addIncomeWithTodayDate();

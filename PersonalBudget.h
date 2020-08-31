@@ -16,9 +16,11 @@ class PersonalBudget
     BudgetManager *budgetManager;
     //DateManager dateManager;
     const string NAME_FILE_WITH_INCOMES;
+    const string NAME_FILE_WITH_EXPENSES;
 
 public:
-    PersonalBudget(string nameFileWithUsers, string nameFileWithIncomes) : userManager(nameFileWithUsers), NAME_FILE_WITH_INCOMES(nameFileWithIncomes)
+    PersonalBudget(string nameFileWithUsers, string nameFileWithIncomes, string nameFileWithExpenses)
+        : userManager(nameFileWithUsers), NAME_FILE_WITH_INCOMES(nameFileWithIncomes), NAME_FILE_WITH_EXPENSES(nameFileWithExpenses)
     {
         budgetManager = NULL;
     };

@@ -13,8 +13,6 @@ using namespace std;
 
 class FileWithIncomes : public XmlFile
 {
-    //int lastIncomeId;
-
     public:
     FileWithIncomes(string nameFileWithIncomes) : XmlFile(nameFileWithIncomes) {};
     vector <Income> loadIncomesFromFile(int signedInUserId);

@@ -81,7 +81,12 @@ void PersonalBudget::addIncome()
     budgetManager->addIncome();
 }
 
-void PersonalBudget::showIncomes()
+void PersonalBudget::addExpense()
 {
-    budgetManager->showIncomes();
+    budgetManager->addExpense();
+}
+
+void PersonalBudget::showExpenses()
+{
+    budgetManager->showExpenses();
 }

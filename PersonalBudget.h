@@ -38,7 +38,8 @@ public:
     char selectOptionFromTheUserMenu();
 
     void addIncome();
-    void showIncomes();
+    void addExpense();
+    void showExpenses();
 };
 
 #endif

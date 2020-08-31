@@ -34,4 +34,5 @@ public:
     bool isUserSignedIn();
     int retrieveSignedInUserId();
 };
+
 #endif

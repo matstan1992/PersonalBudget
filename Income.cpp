@@ -2,12 +2,12 @@
 
 void Income::setUserId(int newUserId)
 {
-        userId = newUserId;
+    userId = newUserId;
 }
 
 void Income::setIncomeId(int newId)
 {
-        incomeId = newId;
+    incomeId = newId;
 }
 
 void Income::setDate(int newDate)

@@ -42,11 +42,11 @@ int main()
             case '1':
                 personalBudget.addIncome();
                 break;
-            /*case '2':
+            case '2':
                 personalBudget.addExpense();
                 break;
                 case '3':
-            personalBudget.showIncomes();
+            personalBudget.showExpenses();
             break;
            /* case '3':
                 personalBudget.showBalanceFromCurrentMonth();

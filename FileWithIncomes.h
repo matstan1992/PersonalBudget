@@ -8,12 +8,13 @@
 #include "Markup.h"
 #include "AuxiliaryMethods.h"
 #include "XmlFile.h"
+#include "DateManager.h"
 
 using namespace std;
 
 class FileWithIncomes : public XmlFile
 {
-    public:
+public:
     FileWithIncomes(string nameFileWithIncomes) : XmlFile(nameFileWithIncomes) {};
     vector <Income> loadIncomesFromFile(int signedInUserId);
     void addIncomeToFile(Income income);

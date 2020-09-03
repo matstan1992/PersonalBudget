@@ -18,7 +18,7 @@ void FileWithIncomes:: addIncomeToFile(Income income)
     xml.IntoElem();
     xml.AddElem("UserId", AuxiliaryMethods::conversionIntToString(income.getUserId()));
     xml.AddElem("IncomeId", AuxiliaryMethods::conversionIntToString(income.getIncomeId()));
-    xml.AddElem("Date", AuxiliaryMethods::conversionIntToString(income.getDate()));
+    xml.AddElem("Date", DateManager::dateConversionIntToString(income.getDate()));
     xml.AddElem("Item", income.getItem());
     xml.AddElem("Amount", AuxiliaryMethods::conversionFloatToString(income.getAmount()));
 
@@ -43,18 +43,18 @@ vector <Income> FileWithIncomes::loadIncomesFromFile(int signedInUserId)
         xml.FindElem("UserId");
         if(AuxiliaryMethods::conversionStringToInt(xml.GetData()) == signedInUserId)
         {
-        xml.FindElem("UserId");
-        income.setUserId(AuxiliaryMethods::conversionStringToInt(xml.GetData()));
-        xml.FindElem("IncomeId");
-        income.setIncomeId(AuxiliaryMethods::conversionStringToInt(xml.GetData()));
-        xml.FindElem("Date");
-        income.setDate(AuxiliaryMethods::conversionStringToInt(xml.GetData()));
-        xml.FindElem("Item");
-        income.setItem(xml.GetData());
-        xml.FindElem("Amount");
-        income.setAmount(AuxiliaryMethods::conversionStringToFloat(xml.GetData()));
+            xml.FindElem("UserId");
+            income.setUserId(AuxiliaryMethods::conversionStringToInt(xml.GetData()));
+            xml.FindElem("IncomeId");
+            income.setIncomeId(AuxiliaryMethods::conversionStringToInt(xml.GetData()));
+            xml.FindElem("Date");
+            income.setDate(DateManager::dateConversionStringToInt(xml.GetData()));
+            xml.FindElem("Item");
+            income.setItem(xml.GetData());
+            xml.FindElem("Amount");
+            income.setAmount(AuxiliaryMethods::conversionStringToFloat(xml.GetData()));
 
-        incomes.push_back(income);
+            incomes.push_back(income);
         }
         xml.OutOfElem();
     }

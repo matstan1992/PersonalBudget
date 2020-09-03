@@ -20,7 +20,7 @@ void BudgetManager::addIncome()
         addIncomeWithTodayDate();
         break;
     case '2':
-//        addIncomeWithDifferentDate();
+        addIncomeWithDifferentDate();
         break;
     case '3':
         return;
@@ -35,7 +35,7 @@ void BudgetManager::addIncome()
 void BudgetManager::addIncomeWithTodayDate()
 {
     Income income;
-    int todayDate = 20200825; //dateManager
+    int todayDate = dateManager.getCurrentDate();
 
     income = enterDataForNewIncome(todayDate);
 
@@ -45,7 +45,7 @@ void BudgetManager::addIncomeWithTodayDate()
     cout << "Nowy przychod zostal dodany" << endl << endl;
     system("pause");
 }
-/*
+
 void BudgetManager::addIncomeWithDifferentDate()
 {
     Income income;
@@ -53,19 +53,25 @@ void BudgetManager::addIncomeWithDifferentDate()
     string enterDate = "";
 
     cout << "Podaj date (rrrr-mm-dd): ";
-    enetrDate = AuxiliaryMethods::loadLine();
+    enterDate = AuxiliaryMethods::loadLine();
 
-    dateManager.dateIsCorrect(enterDate)
-    differentDate = dateManager.convertDate
-    income = enterDataForNewPosition(differentDate);
+    if(!dateManager.isDateCorrect(enterDate))
+    {
+        cout << "Niewlasciwa data" << endl;
+        system("pause");
+        return;
+    }
+    else
+        differentDate = dateManager.dateConversionStringToInt(enterDate);
 
+    income = enterDataForNewIncome(differentDate);
     incomes.push_back(income);
     fileWithIncomes.addIncomeToFile(income);
 
     cout << "Nowy przychod zostal dodany" << endl << endl;
     system("pause");
 }
-*/
+
 Income BudgetManager::enterDataForNewIncome(int date)
 {
     Income income;
@@ -111,7 +117,7 @@ void BudgetManager::addExpense()
         addExpenseWithTodayDate();
         break;
     case '2':
-//        addExpenseWithDifferentDate();
+        addExpenseWithDifferentDate();
         break;
     case '3':
         return;
@@ -126,7 +132,7 @@ void BudgetManager::addExpense()
 void BudgetManager::addExpenseWithTodayDate()
 {
     Expense expense;
-    int todayDate = 20200825; //dateManager
+    int todayDate = dateManager.getCurrentDate();
 
     expense = enterDataForNewExpense(todayDate);
 
@@ -136,27 +142,33 @@ void BudgetManager::addExpenseWithTodayDate()
     cout << "Nowy wydatek zostal dodany" << endl << endl;
     system("pause");
 }
-/*
-void BudgetManager::addIncomeWithDifferentDate()
+
+void BudgetManager::addExpenseWithDifferentDate()
 {
     Expense expense;
     int differentDate = 0;
     string enterDate = "";
 
     cout << "Podaj date (rrrr-mm-dd): ";
-    enetrDate = AuxiliaryMethods::loadLine();
+    enterDate = AuxiliaryMethods::loadLine();
 
-    dateManager.dateIsCorrect(enterDate)
-    differentDate = dateManager.convertDate
-    expense = enterDataForNewPosition(differentDate);
+    if(!dateManager.isDateCorrect(enterDate))
+    {
+        cout << "Niewlasciwa data" << endl;
+        system("pause");
+        return;
+    }
+    else
+    differentDate = dateManager.dateConversionStringToInt(enterDate);
 
+    expense = enterDataForNewExpense(differentDate);
     expenses.push_back(expense);
-    fileWithIncomes.addIncomeToFile(expense);
+    fileWithExpenses.addExpenseToFile(expense);
 
-    cout << "Nowy przychod zostal dodany" << endl << endl;
+    cout << "Nowy wydatek zostal dodany" << endl << endl;
     system("pause");
 }
-*/
+
 Expense BudgetManager::enterDataForNewExpense(int date)
 {
     Expense expense;
@@ -190,7 +202,7 @@ void BudgetManager::showExpenses()
         cout << expenses[i].getExpenseId() << endl;
         cout << expenses[i].getDate() << endl;
         cout << expenses[i].getItem() << endl;
-        cout << expenses[i].getAmount() << endl;
+        cout << expenses[i].getAmount() << endl << endl;
     }
     system("pause");
 }

@@ -10,6 +10,7 @@
 #include "FileWithIncomes.h"
 #include "FileWithExpenses.h"
 #include "AuxiliaryMethods.h"
+#include "DateManager.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ class BudgetManager
     vector <Expense> expenses;
     FileWithIncomes fileWithIncomes;
     FileWithExpenses fileWithExpenses;
+    DateManager dateManager;
 
     Income enterDataForNewIncome(int date);
     Expense enterDataForNewExpense(int date);
@@ -40,7 +42,7 @@ public:
     void addExpense();
     void addExpenseWithTodayDate();
     void addExpenseWithDifferentDate();
-void showExpenses();
+    void showExpenses();
 };
 
 #endif

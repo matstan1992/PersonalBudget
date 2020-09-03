@@ -18,7 +18,7 @@ void FileWithExpenses:: addExpenseToFile(Expense expense)
     xml.IntoElem();
     xml.AddElem("UserId", AuxiliaryMethods::conversionIntToString(expense.getUserId()));
     xml.AddElem("ExpenseId", AuxiliaryMethods::conversionIntToString(expense.getExpenseId()));
-    xml.AddElem("Date", AuxiliaryMethods::conversionIntToString(expense.getDate()));
+    xml.AddElem("Date", DateManager::dateConversionIntToString(expense.getDate()));
     xml.AddElem("Item", expense.getItem());
     xml.AddElem("Amount", AuxiliaryMethods::conversionFloatToString(expense.getAmount()));
 
@@ -43,18 +43,18 @@ vector <Expense> FileWithExpenses::loadExpensesFromFile(int signedInUserId)
         xml.FindElem("UserId");
         if(AuxiliaryMethods::conversionStringToInt(xml.GetData()) == signedInUserId)
         {
-        xml.FindElem("UserId");
-        expense.setUserId(AuxiliaryMethods::conversionStringToInt(xml.GetData()));
-        xml.FindElem("ExpenseId");
-        expense.setExpenseId(AuxiliaryMethods::conversionStringToInt(xml.GetData()));
-        xml.FindElem("Date");
-        expense.setDate(AuxiliaryMethods::conversionStringToInt(xml.GetData()));
-        xml.FindElem("Item");
-        expense.setItem(xml.GetData());
-        xml.FindElem("Amount");
-        expense.setAmount(AuxiliaryMethods::conversionStringToFloat(xml.GetData()));
+            xml.FindElem("UserId");
+            expense.setUserId(AuxiliaryMethods::conversionStringToInt(xml.GetData()));
+            xml.FindElem("ExpenseId");
+            expense.setExpenseId(AuxiliaryMethods::conversionStringToInt(xml.GetData()));
+            xml.FindElem("Date");
+            expense.setDate(DateManager::dateConversionStringToInt(xml.GetData()));
+            xml.FindElem("Item");
+            expense.setItem(xml.GetData());
+            xml.FindElem("Amount");
+            expense.setAmount(AuxiliaryMethods::conversionStringToFloat(xml.GetData()));
 
-        expenses.push_back(expense);
+            expenses.push_back(expense);
         }
         xml.OutOfElem();
     }

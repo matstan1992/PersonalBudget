@@ -12,7 +12,6 @@ void Income::setIncomeId(int newId)
 
 void Income::setDate(int newDate)
 {
-    if(newDate >= 20000101)
         date = newDate;
 }
 

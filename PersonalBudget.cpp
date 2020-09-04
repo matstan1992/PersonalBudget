@@ -78,15 +78,20 @@ bool PersonalBudget::isUserSignedIn()
 
 void PersonalBudget::addIncome()
 {
-    budgetManager->addIncome();
+    budgetManager -> addIncome();
 }
 
 void PersonalBudget::addExpense()
 {
-    budgetManager->addExpense();
+    budgetManager -> addExpense();
 }
 
 void PersonalBudget::showBalanceFromCurrentMonth()
 {
-    budgetManager->showBalanceFromCurrentMonth();
+    budgetManager -> showBalanceFromCurrentMonth();
+}
+
+void PersonalBudget::showBalanceFromPreviousMonth()
+{
+    budgetManager -> showBalanceFromPreviousMonth();
 }

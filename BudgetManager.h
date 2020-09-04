@@ -44,6 +44,7 @@ public:
     void addExpenseWithDifferentDate();
 
     void showBalanceFromCurrentMonth();
+    void showBalanceFromPreviousMonth();
 
     void showIncomes(Income income);
     void showExpenses(Expense expense);

@@ -218,7 +218,8 @@ void BudgetManager::showBalanceFromCurrentMonth()
     else
         cout << endl << "Suma Twoich przychodow w tym miesiacu wynosi: " << sumOfIncomes << endl << endl;
 
-    cout << " >>> TWOJE WYDATKI W TYM MIESIACU <<<" << endl << endl;
+
+    cout << endl << " >>> TWOJE WYDATKI W TYM MIESIACU <<<" << endl << endl;
 
     for(vector <Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++)
     {
@@ -240,6 +241,58 @@ void BudgetManager::showBalanceFromCurrentMonth()
         cout << endl << "Twoj zysk w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
     else if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes < sumOfExpenses))
         cout << endl << "Twoja strata w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
+
+    system("pause");
+}
+
+void BudgetManager::showBalanceFromPreviousMonth()
+{
+    float sumOfIncomes = 0;
+    float sumOfExpenses = 0;
+
+    system("cls");
+    cout << " >>> TWOJE PRZYCHODY W POPRZEDNIM MIESIACU <<<" << endl << endl;
+
+    for(vector <Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++)
+    {
+        if((dateManager.extractMonth(DateManager::dateConversionIntToString(itr -> getDate())) == (dateManager.getCurrentMonth() - 1)) && (dateManager.extractYear(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentYear()))
+        {
+        showIncomes(*itr);
+        sumOfIncomes += itr -> getAmount();
+        }
+    }
+
+    if(sumOfIncomes == 0)
+    {
+        cout << "Nie bylo zadnych przychodow w poprzednim miesiacu. " << endl << endl;
+    }
+    else
+        cout << endl << "Suma Twoich przychodow w poprzednim miesiacu wynosila: " << sumOfIncomes << endl << endl;
+
+
+    cout << endl << " >>> TWOJE WYDATKI W POPRZEDNIM MIESIACU <<<" << endl << endl;
+
+    for(vector <Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++)
+    {
+        if((dateManager.extractMonth(DateManager::dateConversionIntToString(itr -> getDate())) == (dateManager.getCurrentMonth() - 1)) && (dateManager.extractYear(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentYear()))
+        {
+        showExpenses(*itr);
+        sumOfExpenses += itr -> getAmount();
+        }
+    }
+
+    if(sumOfExpenses == 0)
+    {
+        cout << "Nie bylo zadnych wydatkow w poprzednim miesiacu. " << endl << endl;
+    }
+    else
+        cout << endl << "Suma Twoich wydatkow w poprzednim miesiacu wynosila: " << sumOfExpenses << endl << endl;
+
+    if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes > sumOfExpenses))
+        cout << endl << "Twoj zysk w poprzednim miesiacu wynosil: " << sumOfIncomes - sumOfExpenses << endl << endl;
+    else if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes < sumOfExpenses))
+        cout << endl << "Twoja strata w poprzednim miesiacu wynosila: " << sumOfIncomes - sumOfExpenses << endl << endl;
+
     system("pause");
 }
 

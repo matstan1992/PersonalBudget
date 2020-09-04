@@ -159,7 +159,7 @@ void BudgetManager::addExpenseWithDifferentDate()
         return;
     }
     else
-    differentDate = dateManager.dateConversionStringToInt(enterDate);
+        differentDate = dateManager.dateConversionStringToInt(enterDate);
 
     expense = enterDataForNewExpense(differentDate);
     expenses.push_back(expense);
@@ -205,8 +205,8 @@ void BudgetManager::showBalanceFromCurrentMonth()
     {
         if((dateManager.extractMonth(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentMonth()) && (dateManager.extractYear(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentYear()))
         {
-        showIncomes(*itr);
-        sumOfIncomes += itr -> getAmount();
+            showIncomes(*itr);
+            sumOfIncomes += itr -> getAmount();
         }
     }
 
@@ -224,8 +224,8 @@ void BudgetManager::showBalanceFromCurrentMonth()
     {
         if((dateManager.extractMonth(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentMonth()) && (dateManager.extractYear(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentYear()))
         {
-        showExpenses(*itr);
-        sumOfExpenses += itr -> getAmount();
+            showExpenses(*itr);
+            sumOfExpenses += itr -> getAmount();
         }
     }
 
@@ -237,9 +237,9 @@ void BudgetManager::showBalanceFromCurrentMonth()
         cout << endl << "Suma Twoich wydatkow w tym miesiacu wynosi: " << sumOfExpenses << endl << endl;
 
     if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes > sumOfExpenses))
-        cout << endl << "Twoj zysk w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
+        cout << endl << endl << "Twoj zysk w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
     else if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes < sumOfExpenses))
-        cout << endl << "Twoja strata w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
+        cout << endl << endl << "Twoja strata w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
 
     system("pause");
 }
@@ -255,8 +255,8 @@ void BudgetManager::showBalanceFromPreviousMonth()
     {
         if((dateManager.extractMonth(DateManager::dateConversionIntToString(itr -> getDate())) == (dateManager.getCurrentMonth() - 1)) && (dateManager.extractYear(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentYear()))
         {
-        showIncomes(*itr);
-        sumOfIncomes += itr -> getAmount();
+            showIncomes(*itr);
+            sumOfIncomes += itr -> getAmount();
         }
     }
 
@@ -274,8 +274,8 @@ void BudgetManager::showBalanceFromPreviousMonth()
     {
         if((dateManager.extractMonth(DateManager::dateConversionIntToString(itr -> getDate())) == (dateManager.getCurrentMonth() - 1)) && (dateManager.extractYear(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentYear()))
         {
-        showExpenses(*itr);
-        sumOfExpenses += itr -> getAmount();
+            showExpenses(*itr);
+            sumOfExpenses += itr -> getAmount();
         }
     }
 
@@ -287,9 +287,9 @@ void BudgetManager::showBalanceFromPreviousMonth()
         cout << endl << "Suma Twoich wydatkow w poprzednim miesiacu wynosila: " << sumOfExpenses << endl << endl;
 
     if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes > sumOfExpenses))
-        cout << endl << "Twoj zysk w poprzednim miesiacu wynosil: " << sumOfIncomes - sumOfExpenses << endl << endl;
+        cout << endl << endl << "Twoj zysk w poprzednim miesiacu wynosil: " << sumOfIncomes - sumOfExpenses << endl << endl;
     else if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes < sumOfExpenses))
-        cout << endl << "Twoja strata w poprzednim miesiacu wynosila: " << sumOfIncomes - sumOfExpenses << endl << endl;
+        cout << endl << endl << "Twoja strata w poprzednim miesiacu wynosila: " << sumOfIncomes - sumOfExpenses << endl << endl;
 
     system("pause");
 }
@@ -315,21 +315,22 @@ void BudgetManager::showBalanceFromSelectedPeriod()
     {
         cout << "Podaj date konca okresu (rrrr-mm-dd): ";
         endDate = AuxiliaryMethods::loadLine();
-    if(!dateManager.isDateCorrect(endDate))
-    {
-        cout << "Niewlasciwa data" << endl;
-        system("pause");
-        return;
+        if(!dateManager.isDateCorrect(endDate))
+        {
+            cout << "Niewlasciwa data" << endl;
+            system("pause");
+            return;
+        }
     }
-    }
-    cout << endl << endl << " >>> TWOJE PRZYCHODY W OKRESIE OD " << beginDate << " DO " << endDate << " <<<" << endl << endl;
+    system("cls");
+    cout << " >>> TWOJE PRZYCHODY W OKRESIE OD " << beginDate << " DO " << endDate << " <<<" << endl << endl;
 
     for(vector <Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++)
     {
         if((itr -> getDate() >= DateManager::dateConversionStringToInt(beginDate)) && (itr -> getDate() <= DateManager::dateConversionStringToInt(endDate)))
         {
-        showIncomes(*itr);
-        sumOfIncomes += itr -> getAmount();
+            showIncomes(*itr);
+            sumOfIncomes += itr -> getAmount();
         }
     }
 
@@ -340,8 +341,31 @@ void BudgetManager::showBalanceFromSelectedPeriod()
     else
         cout << endl << "Suma Twoich przychodow w wybranym okresie: " << sumOfIncomes << endl << endl;
 
-        system("pause");
 
+    cout << endl << endl << " >>> TWOJE WYDATKI W OKRESIE OD " << beginDate << " DO " << endDate << " <<<" << endl << endl;
+
+    for(vector <Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++)
+    {
+        if((itr -> getDate() >= DateManager::dateConversionStringToInt(beginDate)) && (itr -> getDate() <= DateManager::dateConversionStringToInt(endDate)))
+        {
+            showExpenses(*itr);
+            sumOfExpenses += itr -> getAmount();
+        }
+    }
+
+    if(sumOfExpenses == 0)
+    {
+        cout << "Brak wydatkow w wybranym okresie. " << endl << endl;
+    }
+    else
+        cout << endl << "Suma Twoich wydatkow w wybranym okresie: " << sumOfExpenses << endl << endl;
+
+    if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes > sumOfExpenses))
+        cout << endl << endl << "Twoj zysk w wybranym okresie wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
+    else if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes < sumOfExpenses))
+        cout << endl << endl << "Twoja strata w wybranym okresie wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
+
+    system("pause");
 }
 
 void BudgetManager::showIncomes(Income income)

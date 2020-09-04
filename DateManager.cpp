@@ -117,3 +117,21 @@ string DateManager::dateConversionIntToString(int date)
     stringDate.insert(7,"-");
     return stringDate;
 }
+
+int DateManager::extractMonth(string date)
+{
+    int intDate = 0;
+    string dateString = "";
+    dateString = date.substr(5,2);
+    intDate = AuxiliaryMethods::conversionStringToInt(dateString);
+    return intDate;
+}
+
+int DateManager::extractYear(string date)
+{
+    int intDate = 0;
+    string year = "";
+    year = date.substr(0,4);
+    intDate = AuxiliaryMethods::conversionStringToInt(year);
+    return intDate;
+}

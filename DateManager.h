@@ -19,6 +19,8 @@ public:
     int getCurrentYear();
     static int dateConversionStringToInt(string date);
     static string dateConversionIntToString(int date);
+    int extractMonth(string date);
+    int extractYear(string date);
 };
 
 #endif

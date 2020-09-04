@@ -86,7 +86,7 @@ void PersonalBudget::addExpense()
     budgetManager->addExpense();
 }
 
-void PersonalBudget::showExpenses()
+void PersonalBudget::showBalanceFromCurrentMonth()
 {
-    budgetManager->showExpenses();
+    budgetManager->showBalanceFromCurrentMonth();
 }

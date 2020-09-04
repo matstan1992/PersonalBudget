@@ -43,6 +43,9 @@ public:
     void addExpenseWithTodayDate();
     void addExpenseWithDifferentDate();
     void showExpenses();
+    void showBalanceFromCurrentMonth();
+
+    void showIncomes(Income income);
 };
 
 #endif

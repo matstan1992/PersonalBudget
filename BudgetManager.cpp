@@ -194,15 +194,28 @@ int BudgetManager::retrieveNewExpenseId()
     return fileWithExpenses.retrieveLastExpenseId() + 1;
 }
 
-void BudgetManager::showExpenses()
+void BudgetManager::showBalanceFromCurrentMonth()
 {
-    for (int i = 0; i < expenses.size(); i++)
+    float sumOfIncomes = 0;
+    float sumOfExpenses = 0;
+
+    system("cls");
+    cout << " >>> TWOJE PRZYCHODY W TYM MIESIACU <<<" << endl << endl;
+
+    for(vector <Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++)
     {
-        cout << expenses[i].getUserId() << endl;
-        cout << expenses[i].getExpenseId() << endl;
-        cout << expenses[i].getDate() << endl;
-        cout << expenses[i].getItem() << endl;
-        cout << expenses[i].getAmount() << endl << endl;
+        if((dateManager.extractMonth(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentMonth()) && (dateManager.extractYear(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentYear()))
+        {
+        showIncomes(*itr);
+        sumOfIncomes += itr -> getAmount();
+        }
     }
+    cout << sumOfIncomes;
     system("pause");
+}
+//
+//(itr -> getDate() == dateManager.extractMonth()) &&
+void BudgetManager::showIncomes(Income income)
+{
+    cout << "ID Przychodu: " << income.getIncomeId() << " Data: " << DateManager::dateConversionIntToString(income.getDate()) << " Kwota: " << income.getAmount() << " Nazwa: " << income.getItem() << endl;
 }

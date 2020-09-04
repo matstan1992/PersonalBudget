@@ -210,12 +210,45 @@ void BudgetManager::showBalanceFromCurrentMonth()
         sumOfIncomes += itr -> getAmount();
         }
     }
-    cout << sumOfIncomes;
+
+    if(sumOfIncomes == 0)
+    {
+        cout << "Nie masz zadnych przychodow w tym miesiacu. " << endl << endl;
+    }
+    else
+        cout << endl << "Suma Twoich przychodow w tym miesiacu wynosi: " << sumOfIncomes << endl << endl;
+
+    cout << " >>> TWOJE WYDATKI W TYM MIESIACU <<<" << endl << endl;
+
+    for(vector <Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++)
+    {
+        if((dateManager.extractMonth(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentMonth()) && (dateManager.extractYear(DateManager::dateConversionIntToString(itr -> getDate())) == dateManager.getCurrentYear()))
+        {
+        showExpenses(*itr);
+        sumOfExpenses += itr -> getAmount();
+        }
+    }
+
+    if(sumOfExpenses == 0)
+    {
+        cout << "Nie masz zadnych wydatkow w tym miesiacu. " << endl << endl;
+    }
+    else
+        cout << endl << "Suma Twoich wydatkow w tym miesiacu wynosi: " << sumOfExpenses << endl << endl;
+
+    if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes > sumOfExpenses))
+        cout << endl << "Twoj zysk w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
+    else if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes < sumOfExpenses))
+        cout << endl << "Twoja strata w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
     system("pause");
 }
-//
-//(itr -> getDate() == dateManager.extractMonth()) &&
+
 void BudgetManager::showIncomes(Income income)
 {
     cout << "ID Przychodu: " << income.getIncomeId() << " Data: " << DateManager::dateConversionIntToString(income.getDate()) << " Kwota: " << income.getAmount() << " Nazwa: " << income.getItem() << endl;
+}
+
+void BudgetManager::showExpenses(Expense expense)
+{
+    cout << "ID Wydatku: " << expense.getIncomeId() << " Data: " << DateManager::dateConversionIntToString(expense.getDate()) << " Kwota: " << expense.getAmount() << " Nazwa: " << expense.getItem() << endl;
 }

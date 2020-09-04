@@ -95,3 +95,8 @@ void PersonalBudget::showBalanceFromPreviousMonth()
 {
     budgetManager -> showBalanceFromPreviousMonth();
 }
+
+void PersonalBudget::showBalanceFromSelectedPeriod()
+{
+    budgetManager -> showBalanceFromSelectedPeriod();
+}

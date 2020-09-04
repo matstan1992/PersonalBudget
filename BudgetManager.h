@@ -45,6 +45,7 @@ public:
 
     void showBalanceFromCurrentMonth();
     void showBalanceFromPreviousMonth();
+    void showBalanceFromSelectedPeriod();
 
     void showIncomes(Income income);
     void showExpenses(Expense expense);

@@ -196,8 +196,7 @@ int BudgetManager::retrieveNewExpenseId()
 
 void BudgetManager::showBalanceFromCurrentMonth()
 {
-    float sumOfIncomes = 0;
-    float sumOfExpenses = 0;
+    float sumOfIncomes = 0, sumOfExpenses = 0;
 
     system("cls");
     cout << " >>> TWOJE PRZYCHODY W TYM MIESIACU <<<" << endl << endl;
@@ -247,8 +246,7 @@ void BudgetManager::showBalanceFromCurrentMonth()
 
 void BudgetManager::showBalanceFromPreviousMonth()
 {
-    float sumOfIncomes = 0;
-    float sumOfExpenses = 0;
+    float sumOfIncomes = 0, sumOfExpenses = 0;
 
     system("cls");
     cout << " >>> TWOJE PRZYCHODY W POPRZEDNIM MIESIACU <<<" << endl << endl;
@@ -294,6 +292,56 @@ void BudgetManager::showBalanceFromPreviousMonth()
         cout << endl << "Twoja strata w poprzednim miesiacu wynosila: " << sumOfIncomes - sumOfExpenses << endl << endl;
 
     system("pause");
+}
+
+void BudgetManager::showBalanceFromSelectedPeriod()
+{
+    string beginDate = "", endDate = "";
+    float sumOfIncomes = 0, sumOfExpenses = 0;
+
+    system("cls");
+    cout << " >>> TWOJ BILANS W WYBRANYM OKRESIE <<<" << endl << endl;
+
+    cout << "Podaj date poczatku okresu (rrrr-mm-dd): ";
+    beginDate = AuxiliaryMethods::loadLine();
+
+    if(!dateManager.isDateCorrect(beginDate))
+    {
+        cout << "Niewlasciwa data" << endl;
+        system("pause");
+        return;
+    }
+    else
+    {
+        cout << "Podaj date konca okresu (rrrr-mm-dd): ";
+        endDate = AuxiliaryMethods::loadLine();
+    if(!dateManager.isDateCorrect(endDate))
+    {
+        cout << "Niewlasciwa data" << endl;
+        system("pause");
+        return;
+    }
+    }
+    cout << endl << endl << " >>> TWOJE PRZYCHODY W OKRESIE OD " << beginDate << " DO " << endDate << " <<<" << endl << endl;
+
+    for(vector <Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++)
+    {
+        if((itr -> getDate() >= DateManager::dateConversionStringToInt(beginDate)) && (itr -> getDate() <= DateManager::dateConversionStringToInt(endDate)))
+        {
+        showIncomes(*itr);
+        sumOfIncomes += itr -> getAmount();
+        }
+    }
+
+    if(sumOfIncomes == 0)
+    {
+        cout << "Brak przychodow w wybranym okresie. " << endl << endl;
+    }
+    else
+        cout << endl << "Suma Twoich przychodow w wybranym okresie: " << sumOfIncomes << endl << endl;
+
+        system("pause");
+
 }
 
 void BudgetManager::showIncomes(Income income)

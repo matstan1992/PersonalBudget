@@ -42,7 +42,13 @@ public:
     void addExpense();
     void addExpenseWithTodayDate();
     void addExpenseWithDifferentDate();
-    void showExpenses();
+
+    void showBalanceFromCurrentMonth();
+    void showBalanceFromPreviousMonth();
+    void showBalanceFromSelectedPeriod();
+
+    void showIncomes(Income income);
+    void showExpenses(Expense expense);
 };
 
 #endif

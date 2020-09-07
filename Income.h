@@ -3,28 +3,18 @@
 
 #include <iostream>
 
+#include "IncomeExpense.h"
+
 using namespace std;
 
-class Income
+class Income : public IncomeExpense
 {
-    int userId;
     int incomeId;
-    int date;
-    string item;
-    float amount;
 
 public:
-    void setUserId(int newUserId);
     void setIncomeId(int newId);
-    void setDate(int newDate);
-    void setItem(string newItem);
-    void setAmount(float newAmount);
 
-    int getUserId();
     int getIncomeId();
-    int getDate();
-    string getItem();
-    float getAmount();
 };
 
 #endif

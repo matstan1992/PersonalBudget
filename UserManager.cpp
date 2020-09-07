@@ -102,10 +102,7 @@ User UserManager::getDataNewUser()
 
 int UserManager::retrieveNewUserId()
 {
-    if (users.empty() == true)
-        return 1;
-    else
-        return users.back().getId() + 1;
+    return (users.empty() == true) ? 1 : users.back().getId() + 1;
 }
 
 bool UserManager::isLoginExist(string login)
@@ -144,4 +141,26 @@ bool UserManager::isUserSignedIn()
 int UserManager::retrieveSignedInUserId()
 {
     return signedInUserId;
+}
+
+string UserManager::getNameOfSignedInUser()
+{
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getId() == signedInUserId)
+        {
+            return itr -> getName();
+        }
+    }
+}
+
+string UserManager::getSurnameOfSignedInUser()
+{
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getId() == signedInUserId)
+        {
+            return itr -> getSurname();
+        }
+    }
 }

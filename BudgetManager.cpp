@@ -57,9 +57,8 @@ void BudgetManager::addIncomeWithDifferentDate()
 
     if(!dateManager.isDateCorrect(enterDate))
     {
-        cout << "Niewlasciwa data" << endl;
-        system("pause");
-        return;
+        cout << "Niewlasciwa data. Wpisz date z przedzialu od 2000-01-01 do ostatniego dnia biezacego miesiaca. " << endl << endl;
+        return addIncomeWithDifferentDate();
     }
     else
         differentDate = dateManager.dateConversionStringToInt(enterDate);
@@ -86,7 +85,7 @@ Income BudgetManager::enterDataForNewIncome(int date)
     cout << "Nazwa przychodu: ";
     income.setItem(AuxiliaryMethods::loadLine());
 
-    cout << "Kwota przychodu: ";
+    cout << "Kwota przychodu (w zl): ";
     income.setAmount(AuxiliaryMethods::loadFloatNumber());
 
     return income;
@@ -154,9 +153,8 @@ void BudgetManager::addExpenseWithDifferentDate()
 
     if(!dateManager.isDateCorrect(enterDate))
     {
-        cout << "Niewlasciwa data" << endl;
-        system("pause");
-        return;
+        cout << "Niewlasciwa data. Wpisz date z przedzialu od 2000-01-01 do ostatniego dnia biezacego miesiaca. " << endl << endl;
+        return addExpenseWithDifferentDate();
     }
     else
         differentDate = dateManager.dateConversionStringToInt(enterDate);
@@ -183,7 +181,7 @@ Expense BudgetManager::enterDataForNewExpense(int date)
     cout << "Nazwa wydatku: ";
     expense.setItem(AuxiliaryMethods::loadLine());
 
-    cout << "Kwota wydatku: ";
+    cout << "Kwota wydatku (w zl): ";
     expense.setAmount(AuxiliaryMethods::loadFloatNumber());
 
     return expense;
@@ -215,7 +213,7 @@ void BudgetManager::showBalanceFromCurrentMonth()
         cout << "Nie masz zadnych przychodow w tym miesiacu. " << endl << endl;
     }
     else
-        cout << endl << "Suma Twoich przychodow w tym miesiacu wynosi: " << sumOfIncomes << endl << endl;
+        cout << endl << "Suma Twoich przychodow w tym miesiacu wynosi: " << sumOfIncomes << " zl" << endl << endl;
 
 
     cout << endl << " >>> TWOJE WYDATKI W TYM MIESIACU <<<" << endl << endl;
@@ -234,12 +232,12 @@ void BudgetManager::showBalanceFromCurrentMonth()
         cout << "Nie masz zadnych wydatkow w tym miesiacu. " << endl << endl;
     }
     else
-        cout << endl << "Suma Twoich wydatkow w tym miesiacu wynosi: " << sumOfExpenses << endl << endl;
+        cout << endl << "Suma Twoich wydatkow w tym miesiacu wynosi: " << sumOfExpenses << " zl" << endl << endl;
 
     if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes > sumOfExpenses))
-        cout << endl << endl << "Twoj zysk w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
+        cout << endl << endl << "Twoj zysk w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << " zl" << endl << endl;
     else if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes < sumOfExpenses))
-        cout << endl << endl << "Twoja strata w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
+        cout << endl << endl << "Twoja strata w biezacym miesiacu wynosi: " << sumOfIncomes - sumOfExpenses << " zl" << endl << endl;
 
     system("pause");
 }
@@ -265,7 +263,7 @@ void BudgetManager::showBalanceFromPreviousMonth()
         cout << "Nie bylo zadnych przychodow w poprzednim miesiacu. " << endl << endl;
     }
     else
-        cout << endl << "Suma Twoich przychodow w poprzednim miesiacu wynosila: " << sumOfIncomes << endl << endl;
+        cout << endl << "Suma Twoich przychodow w poprzednim miesiacu wynosila: " << sumOfIncomes << " zl" << endl << endl;
 
 
     cout << endl << " >>> TWOJE WYDATKI W POPRZEDNIM MIESIACU <<<" << endl << endl;
@@ -284,12 +282,12 @@ void BudgetManager::showBalanceFromPreviousMonth()
         cout << "Nie bylo zadnych wydatkow w poprzednim miesiacu. " << endl << endl;
     }
     else
-        cout << endl << "Suma Twoich wydatkow w poprzednim miesiacu wynosila: " << sumOfExpenses << endl << endl;
+        cout << endl << "Suma Twoich wydatkow w poprzednim miesiacu wynosila: " << sumOfExpenses << " zl" << endl << endl;
 
     if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes > sumOfExpenses))
-        cout << endl << endl << "Twoj zysk w poprzednim miesiacu wynosil: " << sumOfIncomes - sumOfExpenses << endl << endl;
+        cout << endl << endl << "Twoj zysk w poprzednim miesiacu wynosil: " << sumOfIncomes - sumOfExpenses << " zl" << endl << endl;
     else if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes < sumOfExpenses))
-        cout << endl << endl << "Twoja strata w poprzednim miesiacu wynosila: " << sumOfIncomes - sumOfExpenses << endl << endl;
+        cout << endl << endl << "Twoja strata w poprzednim miesiacu wynosila: " << sumOfIncomes - sumOfExpenses << " zl" << endl << endl;
 
     system("pause");
 }
@@ -307,9 +305,9 @@ void BudgetManager::showBalanceFromSelectedPeriod()
 
     if(!dateManager.isDateCorrect(beginDate))
     {
-        cout << "Niewlasciwa data" << endl;
+        cout << "Niewlasciwa data. Twoj bilans moze byc pokazany maksymalnie od 2000-01-01. " << endl;
         system("pause");
-        return;
+        return showBalanceFromSelectedPeriod();
     }
     else
     {
@@ -317,9 +315,9 @@ void BudgetManager::showBalanceFromSelectedPeriod()
         endDate = AuxiliaryMethods::loadLine();
         if(!dateManager.isDateCorrect(endDate))
         {
-            cout << "Niewlasciwa data" << endl;
+            cout << "Niewlasciwa data. Twoj bilans moze byc pokazany maksymalnie do ostatniego dnia biezacego miesiaca. " << endl;
             system("pause");
-            return;
+            return showBalanceFromSelectedPeriod();
         }
     }
     system("cls");
@@ -339,7 +337,7 @@ void BudgetManager::showBalanceFromSelectedPeriod()
         cout << "Brak przychodow w wybranym okresie. " << endl << endl;
     }
     else
-        cout << endl << "Suma Twoich przychodow w wybranym okresie: " << sumOfIncomes << endl << endl;
+        cout << endl << "Suma Twoich przychodow w wybranym okresie: " << sumOfIncomes << " zl" << endl << endl;
 
 
     cout << endl << endl << " >>> TWOJE WYDATKI W OKRESIE OD " << beginDate << " DO " << endDate << " <<<" << endl << endl;
@@ -358,24 +356,24 @@ void BudgetManager::showBalanceFromSelectedPeriod()
         cout << "Brak wydatkow w wybranym okresie. " << endl << endl;
     }
     else
-        cout << endl << "Suma Twoich wydatkow w wybranym okresie: " << sumOfExpenses << endl << endl;
+        cout << endl << "Suma Twoich wydatkow w wybranym okresie: " << sumOfExpenses << " zl" << endl << endl;
 
     if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes > sumOfExpenses))
-        cout << endl << endl << "Twoj zysk w wybranym okresie wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
+        cout << endl << endl << "Twoj zysk w wybranym okresie wynosi: " << sumOfIncomes - sumOfExpenses << " zl" << endl << endl;
     else if((sumOfIncomes != 0 || sumOfExpenses != 0) && (sumOfIncomes < sumOfExpenses))
-        cout << endl << endl << "Twoja strata w wybranym okresie wynosi: " << sumOfIncomes - sumOfExpenses << endl << endl;
+        cout << endl << endl << "Twoja strata w wybranym okresie wynosi: " << sumOfIncomes - sumOfExpenses << " zl" << endl << endl;
 
     system("pause");
 }
 
 void BudgetManager::showIncomes(Income income)
 {
-    cout << "ID Przychodu: " << income.getIncomeId() << " Data: " << DateManager::dateConversionIntToString(income.getDate()) << " Kwota: " << income.getAmount() << " Nazwa: " << income.getItem() << endl;
+    cout << "ID Przychodu: " << income.getIncomeId() << " Data: " << DateManager::dateConversionIntToString(income.getDate()) << " Kwota: " << income.getAmount() << " zl" << " Nazwa: " << income.getItem() << endl;
 }
 
 void BudgetManager::showExpenses(Expense expense)
 {
-    cout << "ID Wydatku: " << expense.getIncomeId() << " Data: " << DateManager::dateConversionIntToString(expense.getDate()) << " Kwota: " << expense.getAmount() << " Nazwa: " << expense.getItem() << endl;
+    cout << "ID Wydatku: " << expense.getExpenseId() << " Data: " << DateManager::dateConversionIntToString(expense.getDate()) << " Kwota: " << expense.getAmount() << " zl" << " Nazwa: " << expense.getItem() << endl;
 }
 
 void BudgetManager::sortIncomesByDate()

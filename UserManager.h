@@ -33,6 +33,9 @@ public:
     void showAllUsers();
     bool isUserSignedIn();
     int retrieveSignedInUserId();
+
+    string getNameOfSignedInUser();
+    string getSurnameOfSignedInUser();
 };
 
 #endif

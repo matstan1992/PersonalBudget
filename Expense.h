@@ -3,11 +3,11 @@
 
 #include <iostream>
 
-#include "Income.h"
+#include "IncomeExpense.h"
 
 using namespace std;
 
-class Expense : public Income
+class Expense : public IncomeExpense
 {
     int expenseId;
 
@@ -15,7 +15,6 @@ public:
     void setExpenseId(int newId);
 
     int getExpenseId();
-
 };
 
 #endif

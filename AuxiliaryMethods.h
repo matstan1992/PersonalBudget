@@ -11,7 +11,7 @@ using namespace std;
 class AuxiliaryMethods
 {
 public:
-    static string changeTheFirstLetterToUpperCaseAndTheRestToLowerCase (string text);
+    static string changeTheFirstLetterToUpperCaseAndTheRestToLowerCase(string text);
     static string conversionIntToString(int number);
     static int conversionStringToInt(string number);
     static float loadFloatNumber();

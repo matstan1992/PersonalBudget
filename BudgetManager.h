@@ -34,6 +34,8 @@ public:
     {
         incomes = fileWithIncomes.loadIncomesFromFile(SIGNED_IN_USER_ID);
         expenses = fileWithExpenses.loadExpensesFromFile(SIGNED_IN_USER_ID);
+        sortIncomesByDate();
+        sortExpensesByDate();
     };
     void addIncome();
     void addIncomeWithTodayDate();
@@ -49,6 +51,9 @@ public:
 
     void showIncomes(Income income);
     void showExpenses(Expense expense);
+
+    void sortIncomesByDate();
+    void sortExpensesByDate();
 };
 
 #endif

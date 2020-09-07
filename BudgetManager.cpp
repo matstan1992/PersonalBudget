@@ -377,3 +377,27 @@ void BudgetManager::showExpenses(Expense expense)
 {
     cout << "ID Wydatku: " << expense.getIncomeId() << " Data: " << DateManager::dateConversionIntToString(expense.getDate()) << " Kwota: " << expense.getAmount() << " Nazwa: " << expense.getItem() << endl;
 }
+
+void BudgetManager::sortIncomesByDate()
+{
+    struct date
+    {
+        inline bool operator () (Income& date1, Income& date2)
+        {
+            return (date1.getDate() < date2.getDate());
+        }
+    };
+    sort(incomes.begin(), incomes.end(), date());
+}
+
+void BudgetManager::sortExpensesByDate()
+{
+    struct date
+    {
+        inline bool operator () (Expense& date1, Expense& date2)
+        {
+            return (date1.getDate() < date2.getDate());
+        }
+    };
+    sort(expenses.begin(), expenses.end(), date());
+}

@@ -14,7 +14,7 @@ class PersonalBudget
 {
     UserManager userManager;
     BudgetManager *budgetManager;
-    //DateManager dateManager;
+
     const string NAME_FILE_WITH_INCOMES;
     const string NAME_FILE_WITH_EXPENSES;
 
